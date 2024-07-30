@@ -9,15 +9,9 @@ import cookieParser from "cookie-parser";
 
 const app = express();
 
-const connect = async () => {
-    try {
-        await mongoose.connect("mongodb+srv://ritesh:ritesh@cluster0.vky8cmq.mongodb.net/?retryWrites=true&w=majority")
-            .then(console.log("Connected to database"))
-            .catch((err) => { console.log(err) });
-    } catch (error) {
-        console.log(error);
-    }
-}
+mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@chatappc0.x2zlybw.mongodb.net/`)
+  .then(() => console.log('Connected to MongoDB'))
+  .catch(err => console.log(err));
 
 
 app.use(express.json());
